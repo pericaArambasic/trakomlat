@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('music',[\App\Http\Controllers\MusicController::class, 'getAllMusic']);
+Route::get('music/{id}','MusicController@getMusic');
+Route::post('music', [\App\Http\Controllers\MusicController::class, 'createMusic']);
+Route::put('music/{id}','MusicController@updateMusic');
+Route::delete('music/{id}','MusicController@deleteMusic');
