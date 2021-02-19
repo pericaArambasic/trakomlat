@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('music',[\App\Http\Controllers\MusicController::class, 'getAllMusic']);
-Route::get('music/{id}','MusicController@getMusic');
+Route::get('music/{id}', [App\Http\Controllers\MusicController::class, 'getMusic']);
 Route::post('music', [\App\Http\Controllers\MusicController::class, 'createMusic']);
-Route::put('music/{id}','MusicController@updateMusic');
-Route::delete('music/{id}','MusicController@deleteMusic');
+Route::put('music/{id}', [\App\Http\Controllers\MusicController::class, 'updateMusic']);
+Route::delete('music/{id}', [\App\Http\Controllers\MusicController::class, 'deleteMusic']);
