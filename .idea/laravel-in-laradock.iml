@@ -109,6 +109,7 @@
       <excludeFolder url="file://$MODULE_DIR$/trakomlat/vendor/symfony/mime" />
       <excludeFolder url="file://$MODULE_DIR$/trakomlat/vendor/sebastian/diff" />
       <excludeFolder url="file://$MODULE_DIR$/trakomlat/vendor/laravel/ui" />
+      <excludeFolder url="file://$MODULE_DIR$/trakomlat/vendor/laravel/breeze" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

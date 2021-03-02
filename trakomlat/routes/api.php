@@ -23,3 +23,6 @@ Route::get('music/{id}', [App\Http\Controllers\MusicController::class, 'getMusic
 Route::post('music', [\App\Http\Controllers\MusicController::class, 'createMusic']);
 Route::put('music/{id}', [\App\Http\Controllers\MusicController::class, 'updateMusic']);
 Route::delete('music/{id}', [\App\Http\Controllers\MusicController::class, 'deleteMusic']);
+
+Route::post('user', [\App\Http\Controllers\UserController::class, 'createUser']);
+Route::get('user', [\App\Http\Controllers\UserController::class, 'loginUser']);

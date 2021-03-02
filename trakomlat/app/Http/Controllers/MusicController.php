@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 use App\Models\Music;
@@ -12,10 +13,11 @@ class MusicController extends Controller
     public function getAllMusic()
     {
         $music = Music::all()->toJson();
+
         return response($music, 200);
     }
 
-    public function createMusic(Request $request)
+    public function createMusic(Request $request): JsonResponse
     {
         $music = new Music;
         $music->name = $request->name;
@@ -32,6 +34,7 @@ class MusicController extends Controller
         if (Music::where('id',$id)->exists())
         {
             $music = Music::where('id', $id) -> get()->toJson();
+
             return response($music,200);
         }
         else
@@ -54,6 +57,7 @@ class MusicController extends Controller
                 "message" => "music link updated successfully"
             ], 200);
         } else {
+
             return response()->json([
                 "message" => "music link not found"
             ], 404);
@@ -74,6 +78,7 @@ class MusicController extends Controller
         }
         else
         {
+
             return response()->json([
                "message" => "music link not found"
             ], 404);
