@@ -1,5 +1,8 @@
 <?php
 
+use App\Logging\CustomLog;
+
+use Monolog\Formatter\JsonFormatter;
 use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
@@ -16,7 +19,6 @@ return [
     | one of the channels defined in the "channels" configuration array.
     |
     */
-
     'default' => env('LOG_CHANNEL', 'stack'),
 
     /*
@@ -34,17 +36,20 @@ return [
     |
     */
 
+
     'channels' => [
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],
             'ignore_exceptions' => false,
-        ],
+            ],
 
         'single' => [
             'driver' => 'single',
-            'path' => storage_path('logs/laravel.log'),
+            'path' => storage_path('logs/test.log'),
+            'tap' => [CustomLog::class],
             'level' => env('LOG_LEVEL', 'debug'),
+            'formatter' => JsonFormatter::class,
         ],
 
         'daily' => [
@@ -52,6 +57,7 @@ return [
             'path' => storage_path('logs/laravel.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
+            'formatter' => JsonFormatter::class,
         ],
 
         'slack' => [
@@ -65,6 +71,7 @@ return [
         'papertrail' => [
             'driver' => 'monolog',
             'level' => env('LOG_LEVEL', 'debug'),
+            'formatter' => JsonFormatter::class,
             'handler' => SyslogUdpHandler::class,
             'handler_with' => [
                 'host' => env('PAPERTRAIL_URL'),
@@ -84,21 +91,29 @@ return [
         'syslog' => [
             'driver' => 'syslog',
             'level' => env('LOG_LEVEL', 'debug'),
+            'formatter' => JsonFormatter::class,
         ],
 
         'errorlog' => [
             'driver' => 'errorlog',
             'level' => env('LOG_LEVEL', 'debug'),
+            'formatter' => JsonFormatter::class,
         ],
 
         'null' => [
             'driver' => 'monolog',
             'handler' => NullHandler::class,
+            'formatter' => JsonFormatter::class,
         ],
 
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
+            'formatter' => JsonFormatter::class,
         ],
-    ],
 
+        'testing' => [
+            'driver' => 'monolog',
+            'formatter' => JsonFormatter::class,
+        ]
+    ],
 ];

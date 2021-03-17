@@ -26,3 +26,5 @@ Route::delete('music/{id}', [\App\Http\Controllers\MusicController::class, 'dele
 
 Route::post('user', [\App\Http\Controllers\UserController::class, 'createUser']);
 Route::get('user', [\App\Http\Controllers\UserController::class, 'loginUser']);
+
+Route::get('log',[\App\Http\Controllers\UserController::class, 'testLog']);
