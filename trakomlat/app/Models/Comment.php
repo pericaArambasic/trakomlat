@@ -15,4 +15,8 @@ class Comment extends Model
      * @var string
      */
     protected $table = 'comments';
+
+    public static function where(string $string, $id)
+    {
+    }
 }
